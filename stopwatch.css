@@ -35,3 +35,20 @@ body {
     font-size: 14px;
     border-radius: 5px;
 }
+
+
+@media screen and (max-width: 430px) {
+
+    .container {
+        width: 360px;
+    }
+
+    .time-style {
+        font-size: 60px;
+    }
+
+    .btn-style {
+        padding: 14px 30px;
+    }
+    
+}
