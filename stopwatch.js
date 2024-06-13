@@ -16,8 +16,10 @@ let min = '00';
 let Hour = '00';
 
 let intervallId;
+/// prevent from looping the setintervall
+let isStopWatchStart;
 
-startButton.addEventListener('click', () => {
+function start() {
     intervallId = setInterval( () => {
 
         if (miliSec === 99) {
@@ -41,14 +43,25 @@ startButton.addEventListener('click', () => {
         hour.innerHTML = Hour;
         
     }, 10);
+
+    isStopWatchStart = true;
+}
+
+startButton.addEventListener('click', () => {
+    if (!isStopWatchStart) {
+        start();
+    } else {
+        return;
+    }
+
 });
 
 stopButton.addEventListener('click', () => {
-    clearInterval(intervallId);
+    stop();
 });
 
 resetButton.addEventListener('click', () => {
-    clearInterval(intervallId);
+    stop();
     miliSec = '00';
     sec = '00';
     min = '00';
@@ -62,3 +75,7 @@ resetButton.addEventListener('click', () => {
 
 })
 
+function stop() {
+    isStopWatchStart = false;
+    clearInterval(intervallId);
+}
